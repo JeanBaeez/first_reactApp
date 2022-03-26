@@ -22,7 +22,9 @@ class App extends Component {
           <p>
             Hello {this.state.name}
           </p>
-          <Botones Git={this.state.GitHubProfileLink} ></Botones>
+          
+          <Button variant="contained" color="success" onClick={() => {this.setState({name:'JLZNER'});}} >Change</Button>
+            <Button variant='contained' onClick={() => window.open} href={this.state.GitHubProfileLink}>Github</Button>
         </header>
       </div>
     );
