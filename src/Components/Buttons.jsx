@@ -6,7 +6,7 @@ function Botones(Git) {
 
     return (
         <div>
-            <Button variant="contained" color="success" >Change</Button>
+            <Button variant="contained" color="success" onclick={() => {this.setState({Name:'JLZNER'})}} >Change</Button>
             <Button variant='contained' onClick={() => window.open} href={Git['Git']}   >Github</Button>
         </div>
            );
