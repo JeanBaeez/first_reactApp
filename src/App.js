@@ -1,18 +1,28 @@
 import { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Button from '@mui/material/Button';
+import Botones from './Components/Buttons';
 
 //App component as class
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: 'Jean Baez',
+      GitHubProfileLink: 'https://github.com/JeanBaeez'
+    }
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Hello @JeanBaeez
+            Hello {this.state.name}
           </p>
-          <button type="button" className='btn btn-info'>Change</button>
+          <Botones Git={this.state.GitHubProfileLink} ></Botones>
         </header>
       </div>
     );
