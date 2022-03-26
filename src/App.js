@@ -20,7 +20,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Hello {this.state.name}
+            Wellcome {this.state.name}
           </p>
           
           <Button variant="contained" color="success" onClick={() => {this.setState({name:'JLZNER'});}} >Change</Button>
