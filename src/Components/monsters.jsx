@@ -1,5 +1,6 @@
 import { Component } from 'react';
-
+import CarList from './card-list.component';
+import SearchBox from './search-box.component';
 
 
 class Monsters extends Component {
@@ -13,8 +14,11 @@ class Monsters extends Component {
     componentDidMount() {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
-            .then(users => this.setState(() => { return { monsters: users } },
-                () => console.log(this.state.monsters)));
+            .then(users => this.setState(() => { return { monsters: users } }));
+    }
+    onSearchChange = (event) => {
+        const searchField = event.target.value.toLocaleLowerCase();
+        this.setState(() => { return { searchField } });
     }
     render() {
         const filteredMonsters = this.state.monsters.filter((monster) => {
@@ -23,25 +27,9 @@ class Monsters extends Component {
 
         return (
             <div className='container'>
-                <input
-                    className='search-box'
-                    type='search'
-                    placeholder='search monsters'
-                    onChange={(event) => {
-                        const searchField = event.target.value.toLocaleLowerCase();
-                        this.setState(
-                            () => {
-                                return { searchField }
-                            });
-                    }}
-                />
-                {filteredMonsters.map((monster) => {
-                    return (
-                        <div key={monster.id} className='card'>
-                            <h3>{monster.name}</h3>
-                        </div>
-                    );
-                })}
+                <SearchBox searchChange={this.onSearchChange} PlaceHolder='Search Monsters' className='monsters' />
+                <br />
+                <CarList monsters={filteredMonsters} />
             </div>
         );
     }
